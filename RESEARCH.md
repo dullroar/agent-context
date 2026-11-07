@@ -33,6 +33,36 @@ parts; this project should compose with them rather than recreate them.
    `inspect` after the file format and CLI have proved useful. It should remain
    an adapter, not a prerequisite.
 
+## Initial findings: Copilot and a shared drive
+
+Checked 2026-11-07 against the documentation below; these are documented
+capabilities, not local test results. [The research plan](plans/research/spec.md)
+starts by expanding these into a version- and environment-specific matrix.
+
+- **Copilot and VS Code:** [VS Code's hook guide](https://code.visualstudio.com/docs/agent-customization/hooks)
+  describes separate Copilot, Claude and Codex session-target implementations,
+  and lists Copilot session, prompt, tool, compaction and subagent events. It
+  says its hooks experience is preview and enterprise policy may restrict hooks
+  and provider harnesses. The [GitHub hooks overview](https://docs.github.com/en/copilot/concepts/customizations/hooks)
+  distinguishes executable hooks from instructions to a model. Which events,
+  identifiers and settings work in Jim's specific VS Code/WSL, CLI and desktop
+  installations remains untested.
+- **RDP client drive:** Microsoft documents access to the RDP client's local
+  drives from the remote session when drive redirection is enabled and permitted,
+  and uses `\\tsclient\c\myfiles` in an [example](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/copying-2-gb-file-by-clipboard-redirection-fails).
+  Thus a VM Windows process may be able to use
+  `\\tsclient\C\Users\<username>\ai-dist-mem` while connected. This is a
+  proposed deployment path, not a known available location; an organization's
+  [policy can disable drive redirection](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-remotedesktopservices#donotallowdriveredirection).
+  Treat disconnect/reconnect, concurrent access, permissions and any data
+  transfer restrictions as test and policy questions.
+- **WSL:** Microsoft documents [DrvFs mounting of network paths](https://learn.microsoft.com/en-us/windows/wsl/release-notes)
+  generally. Whether this particular redirected RDP path is reachable from a
+  particular VM's WSL instance, under its user context and policy, is unknown;
+  verify it independently rather than assuming that a Windows path translates.
+  Atomic replacement, interruption recovery and synchronization behavior for
+  this filesystem combination are also untested.
+
 ## Open investigation: agent hooks
 
 Before selecting adapter integrations, investigate pre- and post-hooks across

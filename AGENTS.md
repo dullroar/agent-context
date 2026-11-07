@@ -8,8 +8,9 @@ agent runtime.
 
 ## Working rules
 
-- Read `DESIGN.md`, the active specification in `specs/`, and the active plan
-  in `plans/` before changing behavior.
+- Read `DESIGN.md`, the active specification in `specs/`, and the relevant plan
+  in `plans/` before changing behavior. Follow [the plan execution protocol](plans/README.md)
+  for dependencies, parallel file ownership, integration, and evidence.
 - Keep v0 dependency-free where practical. A CLI must function without network
   access, a daemon, or a model call.
 - Preserve failure-open behavior: registration and enrichment failures must

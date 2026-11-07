@@ -31,7 +31,7 @@ service, distributed locking, or a new runtime protocol.
 - [Design](DESIGN.md) — architecture and explicit non-goals.
 - [Interoperability research](RESEARCH.md) — adjacent standards and gaps.
 - [Initial protocol spec](specs/0001-filesystem-session-registry.md).
-- [Implementation plan](plans/0001-foundation.md).
+- [Coordinated plans](plans/README.md) — research, CLI, setup, and WSL testing.
 - [Repository memory](MEMORY.md) — accumulated operational findings.
 
 ## Status
