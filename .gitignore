@@ -1,0 +1,7 @@
+# Local registry data and implementation-specific environments
+.venv/
+__pycache__/
+*.py[cod]
+
+# Never commit a user's actual context root by accident
+registry/
