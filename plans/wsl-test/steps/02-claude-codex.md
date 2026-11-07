@@ -16,6 +16,10 @@ evidence: ""
 
 Run distinct real sessions in Claude and Codex CLI; test available VS Code WSL session targets independently. Observe supported lifecycle events, native IDs, lookup from another session and failure-open behavior. Resume only by the vendor-supported tested mechanism. Record inaccessible UI or capability as blocked/untested, not passed.
 
+Point the available WSL agents at the selected Windows-profile `ai-dist-mem`
+base and mark any created records as synthetic test data. Preserve the records
+needed for the Windows-side visibility check, then remove only test-owned data.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

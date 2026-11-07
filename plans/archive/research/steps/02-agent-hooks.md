@@ -1,7 +1,7 @@
 ---
 id: 02-agent-hooks
 status: done
-depends_on: [research/01-copilot]
+depends_on: [archive/research/01-copilot]
 touches:
   - RESEARCH.md
 lane: research
@@ -19,7 +19,7 @@ Compare CLI, VS Code WSL and desktop for each vendor; document hooks, session id
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow
-[research spec](../spec.md) and [execution protocol](../../README.md). Only touch
+[research spec](../spec.md) and [execution protocol](../../../README.md). Only touch
 the files listed above; serialize any overlapping work. Do not weaken protected
 checks or change unrelated files. Coordinate spec and shared documentation edits
 with their owner.

@@ -36,7 +36,7 @@ parts; this project should compose with them rather than recreate them.
 ## Initial findings: Copilot and a shared drive
 
 Checked 2026-11-07 against the documentation below; these are documented
-capabilities, not local test results. [The research plan](plans/research/spec.md)
+capabilities, not local test results. [The research plan](plans/archive/research/spec.md)
 starts by expanding these into a version- and environment-specific matrix.
 
 - **Copilot and VS Code:** [VS Code's hook guide](https://code.visualstudio.com/docs/agent-customization/hooks)

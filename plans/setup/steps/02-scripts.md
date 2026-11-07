@@ -42,6 +42,12 @@ not record prompts, transcripts or secrets. Running the installer explicitly
 authorizes the documented current-user setup; this step itself must not modify
 the executor's personal or workplace configuration just to test it.
 
+Exercise preflight and supported setup flows using a uniquely named disposable
+root under the selected Windows-profile mounted test base, plus local controls.
+Use mocked or disposable agent settings for installer tests; test the actual
+WSL/Windows agent integrations against the chosen base in wsl-test. Verify the
+path is configurable and do not bake a username into either installer.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

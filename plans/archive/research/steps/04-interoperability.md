@@ -1,7 +1,7 @@
 ---
 id: 04-interoperability
 status: done
-depends_on: [research/03-shared-storage]
+depends_on: [archive/research/03-shared-storage]
 touches:
   - RESEARCH.md
 lane: research
@@ -19,7 +19,7 @@ Review the three implementation references already linked in RESEARCH.md and the
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow
-[research spec](../spec.md) and [execution protocol](../../README.md). Only touch
+[research spec](../spec.md) and [execution protocol](../../../README.md). Only touch
 the files listed above; serialize any overlapping work. Do not weaken protected
 checks or change unrelated files. Coordinate spec and shared documentation edits
 with their owner.

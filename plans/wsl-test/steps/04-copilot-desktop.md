@@ -16,6 +16,10 @@ evidence: ""
 
 Exercise available VS Code Copilot and relevant CLI/desktop modes with synthetic data and permission; compare hooks, fallback and observed paths to research. Record versions, policy restrictions and unsupported or untested modes. Preserve the earlier WSL results.
 
+Use the same selected Windows-profile registry base for available Windows and
+WSL Copilot/desktop sessions and verify their records are mutually visible.
+Clean up only test-owned records and explicitly mark unavailable hosts or modes.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

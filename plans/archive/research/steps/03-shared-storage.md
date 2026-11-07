@@ -1,7 +1,7 @@
 ---
 id: 03-shared-storage
 status: done
-depends_on: [research/02-agent-hooks]
+depends_on: [archive/research/02-agent-hooks]
 touches:
   - RESEARCH.md
 lane: research
@@ -19,7 +19,7 @@ Map local Windows, WSL, RDP redirected drive, permitted network share and sync-f
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow
-[research spec](../spec.md) and [execution protocol](../../README.md). Only touch
+[research spec](../spec.md) and [execution protocol](../../../README.md). Only touch
 the files listed above; serialize any overlapping work. Do not weaken protected
 checks or change unrelated files. Coordinate spec and shared documentation edits
 with their owner.

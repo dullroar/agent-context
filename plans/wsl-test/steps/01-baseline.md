@@ -16,6 +16,11 @@ evidence: ""
 
 Record WSL, OS, CLI and filesystem versions. Exercise all commands, same-session topics, search, spaces/UTF-8, concurrent independent creates and simulated failure. Capture commands, results, root and project identity without sensitive content.
 
+Use a unique disposable child under the Windows-profile `ai-dist-mem` WSL
+mount as the baseline registry. Record whether the mount is writable in the
+actual test environment; a Linux-only temporary directory does not satisfy
+this check. Clean up only the files and directory created for this run.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

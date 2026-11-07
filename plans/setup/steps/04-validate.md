@@ -22,6 +22,10 @@ before any agent changes, independent detection and correct installation for
 all three agents, missing/unsupported/shim reporting, and safe retries after
 partial failure. Record an unavailable platform check as blocked, not passed.
 
+Include preflight and integration cases under the chosen Windows-profile
+`ai-dist-mem` mount and the Windows spelling of the same base. Record access,
+failure-open and cleanup results separately from local temporary controls.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

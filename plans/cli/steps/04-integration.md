@@ -16,6 +16,10 @@ evidence: ""
 
 Run all protected checks and the full offline suite with no model, daemon or service. Record actual commands, outcomes and platform in results.md. Confirm schema/filename/search tests, failures and distinct topic records; list cross-platform tests deferred to wsl-test.
 
+Include the mounted Windows-profile test base in the integrated storage and
+CLI acceptance checks. Preserve independent local controls and report a blocked
+mount explicitly. Cross-interface Windows and WSL agent checks remain in wsl-test.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

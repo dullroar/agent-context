@@ -70,6 +70,14 @@ Explicitly running an installer to configure the current user authorizes its
 documented changes for that environment; it does not authorize changes to
 workplace policy or another user's configuration.
 
+Use the selected Windows-profile `ai-dist-mem` test base from
+[the plan protocol](../README.md#shared-windowswsl-test-location) for setup
+preflight and integration tests from the outset, with unique disposable test
+roots and ordinary local controls. Test both host-specific path spellings;
+the installer still asks for the root and must not hardcode a username or
+silently require that location for other users. Record mount or Windows-shell
+unavailability as blocked rather than substituting a local-only test.
+
 ## Boundaries and validation
 
 Honor the CLI/spec design and do not require a daemon, MCP, model or network.

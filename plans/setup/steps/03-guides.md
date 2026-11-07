@@ -24,6 +24,10 @@ to read the per-agent results and re-run safely after fixing access. Document
 that a Windows root and a WSL root are host-specific choices, even when they
 refer to the same underlying directory.
 
+Show the user-profile-based Windows and WSL examples from the plan protocol,
+including how to verify their shared location. Explain interop requirements
+and keep the prompt and arbitrary registry-root selection available.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

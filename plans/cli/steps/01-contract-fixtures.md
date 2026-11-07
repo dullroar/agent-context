@@ -1,7 +1,7 @@
 ---
 id: 01-contract-fixtures
 status: pending
-depends_on: [research/05-decisions]
+depends_on: [archive/research/05-decisions]
 touches:
   - specs/0001-filesystem-session-registry.md
   - tests/fixtures/**
@@ -17,6 +17,10 @@ evidence: ""
 ## Change
 
 Freeze schema examples, safe filename grammar and budget, lifecycle vocabulary, positive and negative cases; select language/packaging from the documented decision. Update spec if required; add machine-readable schema only if it adds value. Record test commands once selected.
+
+Design the filesystem fixtures to accept a disposable child of the selected
+Windows-profile `ai-dist-mem` WSL mount from the start of core testing, while
+also supporting normal local temporary controls and usernames with spaces.
 
 ## Dependencies and boundaries
 

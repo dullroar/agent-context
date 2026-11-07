@@ -19,6 +19,11 @@ evidence: ""
 
 Build register, list, search, show and validate over the core. Accept opaque vendor/session inputs, support two topic records per session and search title, project, vendor and ID fragment. Document root selection and exit behavior; test offline and with spaces.
 
+Exercise the commands offline against a unique disposable registry under the
+selected mounted Windows-profile test base, plus local controls. Verify the
+explicit `AGENT_CONTEXT_HOME` and resolved-root display; clean up only test
+artifacts and record the mounted-filesystem result separately.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

@@ -14,7 +14,16 @@ evidence: ""
 
 ## Change
 
-Where authorized and available, use a disposable root to test the same Git identity from Windows and WSL, explicit root selection, spaces, long-but-valid paths, independent concurrent writes, interruption and reconnect. Test RDP redirected client storage from VM Windows and VM WSL separately, and an approved alternative if available. Record exact storage and observed semantics; do not assume atomic rename.
+Run available Windows-native coding agents alongside the WSL agents, all
+configured to the selected profile's `ai-dist-mem` base using each host's path.
+Verify both directions of visibility and independent records from overlapping
+sessions, plus the same Git identity and explicit root selection. Use a unique
+disposable child for spaces, long-but-valid paths, concurrent writes and
+interrupted-write checks; preserve unrelated data. Record missing Windows agent
+access as blocked/untested. Separately, where available and authorized, test
+RDP redirected client storage from VM Windows and VM WSL, reconnect behavior,
+and an approved alternative. Record the actual storage and observed semantics;
+do not assume atomic rename or claim the local Windows mount is an RDP share.
 
 ## Dependencies and boundaries
 

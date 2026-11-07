@@ -17,6 +17,12 @@ evidence: ""
 
 Implement root resolution, ID and filename generation, UTF-8 parsing and validation, safe writes, replacement and collision handling. Add meaningful offline tests for each rule, concurrent independent creates and simulated failures; preserve existing valid records.
 
+From this first filesystem implementation step, run the relevant storage tests
+against a unique disposable child of the Windows-profile `ai-dist-mem` WSL
+mount described in [the plan protocol](../../README.md#shared-windowswsl-test-location),
+in addition to local temporary controls. Record each result and report an
+unavailable mounted root as blocked; never treat local-only tests as equivalent.
+
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow

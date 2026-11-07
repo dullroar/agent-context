@@ -1,7 +1,7 @@
 ---
 id: 01-adoption-design
 status: pending
-depends_on: [research/02-agent-hooks, research/03-shared-storage, research/05-decisions, cli/01-contract-fixtures]
+depends_on: [archive/research/02-agent-hooks, archive/research/03-shared-storage, archive/research/05-decisions, cli/01-contract-fixtures]
 touches:
   - plans/setup/adoption.md
 lane: design
@@ -23,6 +23,10 @@ own artifact and host-specific destination. Define a safe way to carry the
 selected `AGENT_CONTEXT_HOME` into each agent's hook or wrapper and report
 any host where this cannot be established. Account for Windows versus WSL,
 shims, unsupported interfaces, existing settings, safe reruns and partial errors.
+
+Use the Windows-profile `ai-dist-mem` test base defined in the plan protocol
+for the adoption and test examples, with different host-specific path spellings
+and one verified shared location. Keep the installer's root choice configurable.
 
 ## Dependencies and boundaries
 

@@ -1,7 +1,7 @@
 ---
 id: 05-decisions
 status: done
-depends_on: [research/04-interoperability]
+depends_on: [archive/research/04-interoperability]
 touches:
   - RESEARCH.md
   - DESIGN.md
@@ -21,7 +21,7 @@ Use research to resolve peer records versus aliases, adapter contract and filena
 ## Dependencies and boundaries
 
 Complete the cross-plan and local prerequisites in `depends_on` first. Follow
-[research spec](../spec.md) and [execution protocol](../../README.md). Only touch
+[research spec](../spec.md) and [execution protocol](../../../README.md). Only touch
 the files listed above; serialize any overlapping work. Do not weaken protected
 checks or change unrelated files. Coordinate spec and shared documentation edits
 with their owner.

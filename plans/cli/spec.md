@@ -38,6 +38,14 @@ interoperability review are retained in research, setup and wsl-test. The CLI
 must expose enough deterministic status and errors for failure-open wrappers;
 a direct CLI write failure still returns nonzero.
 
+Starting with the core filesystem tests, the user's selected Windows-profile
+`ai-dist-mem` mount is a required test target, using a unique disposable child
+directory as specified in [the plan protocol](../README.md#shared-windowswsl-test-location).
+Test local temporary controls too. Verify and report the mounted-root outcome
+separately; an inaccessible mount is blocked, not a pass. This test selection
+does not change the product's unspecified platform default, require Windows
+for offline CLI operation, or make an absolute path the project identity.
+
 ## Execution and authority
 
 Keep the v0 boundary and [repository rules](../../AGENTS.md). Work within the

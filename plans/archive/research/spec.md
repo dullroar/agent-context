@@ -6,7 +6,7 @@ work and are not claimed as verified.
 
 ## Outcome
 
-Turn the open investigations in [RESEARCH.md](../../RESEARCH.md) into dated,
+Turn the open investigations in [RESEARCH.md](../../../RESEARCH.md) into dated,
 source-backed answers that inform the CLI, setup, and test plans. Begin with
 GitHub Copilot and the actual desktop/VM workflows. Findings are evidence, not
 claims that a particular local installation works.
