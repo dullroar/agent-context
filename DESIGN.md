@@ -38,6 +38,12 @@ MCP can expose this registry later; it is not the registry's data model.
   optional hints, never the sole locator.
 - **Append-friendly:** agents write separate records; no shared mutable central
   index is required for normal registration.
+- **One writer, snapshot readers:** the active agent owns its pointer record for
+  writing by convention. Other actors enumerate names without taking locks and
+  parse a private byte snapshot after closing the source. Readers never request
+  a registry lock; they cannot bypass a lock or sharing policy imposed by an
+  external process. Ownership is a protocol rule, not yet enforced against an
+  uncooperative writer. Native session files remain vendor-managed.
 - **Pointers, not copies:** native vendor session references stay authoritative.
 - **Deterministic base:** creation, validation, filename derivation, and search
   must work without model inference. An LLM may propose a human-friendly slug.
@@ -63,6 +69,15 @@ path hints. A path that works in `C:\\Users\\...` must not be assumed valid in
 `/mnt/c/...`, and the reverse is equally true. The reference CLI will report
 which registry root it resolved rather than silently crossing the Windows/WSL
 boundary.
+
+On Windows, the reader requests read/write/delete sharing so that it does not
+itself deny compatible access. The reference writer uses Windows POSIX-style
+replacement when supported, so that a sharing reader can finish its snapshot
+while the replacement is published; older Windows filesystems may only support
+ordinary replacement, which can fail while a reader is open. An exclusive
+external writer may still deny reads. A snapshot of an in-place changing file
+may be incomplete, so readers validate it and writers should publish complete
+replacements. Network filesystem behavior needs separate testing.
 
 ## Provenance
 

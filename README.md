@@ -37,6 +37,69 @@ service, distributed locking, or a new runtime protocol.
 - [Coordinated plans](plans/README.md) — research, CLI, setup, and WSL testing.
 - [Repository memory](MEMORY.md) — accumulated operational findings.
 
+## CLI
+
+Python 3.10 or newer and the common PyYAML package are required. From this
+checkout, install the CLI with:
+
+```bash
+python -m pip install .
+```
+
+After installation the CLI works offline. `AGENT_CONTEXT_HOME`, when set,
+selects the registry root. Otherwise it uses `~/.local/share/agent-context` on
+Linux/WSL and `%LOCALAPPDATA%\agent-context` on Windows (or the user home
+if `LOCALAPPDATA` is unset). Every command prints its resolved root to standard
+error; Windows and WSL roots are separate unless explicitly configured to the
+same accessible location. A project identity is portable; paths are optional
+hints. For a shared Windows-profile test root see the
+[plan protocol](plans/README.md#shared-windowswsl-test-location).
+
+```bash
+agent-context register --producer codex --vendor codex \
+  --session "opaque session id" --project "git:https://example.org/team/repo.git" \
+  --title "Loan validation" --status active
+agent-context list
+agent-context search "loan"
+agent-context show acr_0123456789ab
+agent-context validate
+```
+
+Use the ID returned by `register` with `show`; an unambiguous ID fragment also
+works. Run `agent-context register --help` for optional path hints and notes.
+The CLI returns zero when it finds no invalid records or operation errors,
+one for invalid records or operation errors, and two for command-line usage
+errors. List, search and validate report invalid
+records rather than silently treating them as valid. Direct write failures are
+nonzero: a calling adapter must handle them without blocking the host agent.
+New records require same-directory hard-link support; unsupported filesystems
+produce an error instead of risking an overwrite or incomplete visible record.
+
+Readers take a private in-memory snapshot and release the source file before
+parsing. They do not request registry locks. On Windows they permit compatible
+read, write and delete sharing. If a file is unavailable because of a sharing
+conflict, denied permission, or disappearance during a scan, list and search
+warn and continue with other records; a warning can therefore indicate a
+persistent access problem, not only a temporary lock. Validation reports an
+unavailable count, and show emits no record when it cannot establish uniqueness.
+Those cases return zero if there is no other error, so scripts must inspect
+warnings and output for completeness rather than rely on exit status alone.
+An external exclusive lock, permissions, an interrupted in-place write or a
+network filesystem can still prevent or delay a read. A snapshot is not a way
+to bypass such restrictions.
+
+Run the offline tests from a checkout where PyYAML is installed:
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+The registry stores pointers, not transcripts. Do not put secrets or prompt
+contents into records. Vendor IDs are opaque and recording one does not imply
+that the vendor supports resume.
+
 ## Status
 
-Planning and specification. No implementation exists yet.
+The reference CLI has passed its offline acceptance suite on local storage and
+the selected Windows-profile WSL mount. Adapter setup and cross-interface
+Windows/WSL agent acceptance are separate planned work.

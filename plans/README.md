@@ -7,7 +7,7 @@ Proposal status is not a claim that implementation or integration has been teste
 
 | Plan | Purpose | Main dependency |
 | --- | --- | --- |
-| [cli](cli/spec.md) | Implement the original foundation CLI | Research decisions before affected implementation |
+| [cli](cli/spec.md) | Foundation CLI and native session launch | Research decisions before affected implementation |
 | [setup](setup/spec.md) | Scripts, hooks, instructions and human setup | Research findings and CLI contract |
 | [wsl-test](wsl-test/spec.md) | Exercise WSL, VS Code, Claude and Codex | CLI and setup ready |
 

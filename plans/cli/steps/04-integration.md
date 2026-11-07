@@ -1,13 +1,13 @@
 ---
 id: 04-integration
-status: pending
+status: done
 depends_on: [cli/03-command-line]
 touches:
   - plans/cli/results.md
 lane: integration
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R1, R2, R3, R4, R5]
-evidence: ""
+evidence: "2026-11-07: full offline suite passed 14 tests in WSL2 Python 3.12.3 / PyYAML 6.0.1 both locally and in a unique disposable child of the selected Windows-profile ai-dist-mem mount outside the sandbox; the mounted child was removed. Offline installation and installed register/validate also passed with dependencies preinstalled; git diff --check passed. Exact commands, requirement coverage and deferred Windows-native, cross-interface and network-filesystem checks are recorded in ../results.md."
 ---
 
 # Run the complete offline acceptance suite

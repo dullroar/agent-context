@@ -1,6 +1,6 @@
 ---
 id: 02-core
-status: pending
+status: done
 depends_on: [cli/01-contract-fixtures]
 touches:
   - src/**
@@ -8,7 +8,7 @@ touches:
 lane: core
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R2, R4, R5]
-evidence: ""
+evidence: "2026-11-07 WSL2, Python 3.12.3, PyYAML 6.0.1: PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_core*.py' -v passed 9 tests using local temporary directories and the selected mount outside the sandbox. The final integrated suite passed on both targets after further complete-before-publication and rename checks were added. It covers fixtures, UTF-8, filenames, roots, collision retries, 40 parallel creates, replacement and simulated write failure. No network-filesystem atomicity is claimed. See results.md for reproducible procedures."
 ---
 
 # Implement deterministic record operations

@@ -1,6 +1,6 @@
 ---
 id: 03-command-line
-status: pending
+status: done
 depends_on: [cli/02-core]
 touches:
   - src/**
@@ -10,7 +10,7 @@ touches:
 lane: cli
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R3, R4, R5]
-evidence: ""
+evidence: "2026-11-07 WSL2, Python 3.12.3 / PyYAML 6.0.1: PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_cli*.py' -v passed 3 tests locally; the same command with AGENT_CONTEXT_TEST_PARENT set to a unique disposable child of the Windows-profile ai-dist-mem mount passed 3 tests outside the sandbox. These exercised every command, root display, opaque IDs, UTF-8, spaced paths, two topics, error exits, and 12 independent concurrent creates. Offline installation with pip --no-build-isolation --no-deps and PIP_NO_INDEX=1 into a temporary system-site-packages venv succeeded; installed register and validate passed. See results.md for procedures and limitations."
 ---
 
 # Expose the registry CLI

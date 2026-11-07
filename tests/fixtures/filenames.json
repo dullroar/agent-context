@@ -1,0 +1,16 @@
+{
+  "valid": [
+    "codex-0123456789ab-topic.md",
+    "agent-1-abcdefabcdef-cafe-loans.md"
+  ],
+  "invalid": [
+    "CON.md",
+    "codex-0123456789ab-topic.md.",
+    "../codex-0123456789ab-topic.md",
+    "codex-0123456789ab-Topic.md",
+    "codex-0123456789ab-.md",
+    "con-0123456789ab-topic.md",
+    "codex-0123456789ab-hello world.md",
+    "codex-0123456789ab-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.md"
+  ]
+}
