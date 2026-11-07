@@ -33,6 +33,27 @@ parts; this project should compose with them rather than recreate them.
    `inspect` after the file format and CLI have proved useful. It should remain
    an adapter, not a prerequisite.
 
+## Open investigation: agent hooks
+
+Before selecting adapter integrations, investigate pre- and post-hooks across
+the coding agents in use. Record evidence and test results for each agent and
+version; support should be marked unknown until verified. Cover:
+
+- Which pre- and post-events are available, including session, prompt, and
+  tool lifecycle events, and what session or project identifiers they expose.
+- Whether hooks work when the agent runs in VS Code and in its desktop UI,
+  including any differences from its CLI.
+- Whether each integration works on Windows and in WSL, where the hook executes,
+  and how it resolves paths and the registry root in each environment.
+- How hooks are configured, what happens when they fail or are interrupted,
+  and whether registry updates can remain failure-open without exposing prompts
+  or transcripts.
+
+Capture the findings as an agent/version-by-interface-and-environment matrix,
+with documentation links, test dates, observed limitations, and untested cases.
+Use the results to choose adapter approaches; do not infer session lifecycle
+events from hooks that cannot observe them.
+
 ## Related implementations to inspect before coding adapters
 
 - [agents-memory](https://github.com/lolaplex/agents-memory) — Markdown-first,

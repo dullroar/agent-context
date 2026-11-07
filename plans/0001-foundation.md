@@ -21,9 +21,11 @@ conforming to spec 0001, with no service dependency.
 4. **CLI** — implement `register`, `list`, `search`, `show`, and `validate`.
    `register` must work with opaque vendor/session arguments and must not
    contact an external service.
-5. **Adapters** — prototype one wrapper or hook per available coding-agent
-   environment. Each adapter must declare exactly which lifecycle event it can
-   observe; unsupported events remain `unknown` rather than being guessed.
+5. **Adapters** — investigate agent pre- and post-hook support across VS Code,
+   desktop UIs, Windows, and WSL as described in `RESEARCH.md`, then prototype
+   one wrapper or hook per available coding-agent environment. Each adapter
+   must declare exactly which lifecycle event it can observe; unsupported events
+   remain `unknown` rather than being guessed.
 6. **Windows/WSL acceptance** — test the same Git checkout registered from
    Windows and WSL; spaces, long-but-valid paths, interrupted writes,
    concurrent independent registration, and sync-folder behavior. Confirm that
