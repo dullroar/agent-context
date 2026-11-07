@@ -29,7 +29,9 @@ MCP can expose this registry later; it is not the registry's data model.
 - **Filesystem first:** records are ordinary files; directory listing is the
   minimum viable index.
 - **Identity before title:** a stable record ID prevents a changed topic label
-  from changing the session's identity.
+  from changing the session's identity. Each session/topic is an independent
+  peer record, including multiple topics for one native session; v0 needs no
+  canonical parent, symlink, or generated alias index.
 - **Short paths:** keep portable filenames short to reduce Windows path risk.
 - **Environment-neutral identity:** project and session identity must not depend
   on an absolute Windows or WSL path. Environment-specific locations are
@@ -40,6 +42,10 @@ MCP can expose this registry later; it is not the registry's data model.
 - **Deterministic base:** creation, validation, filename derivation, and search
   must work without model inference. An LLM may propose a human-friendly slug.
 - **Failure open:** inability to record or enrich a pointer cannot stop an agent.
+- **Adapter observations:** adapters pass only observed native identity, event
+  and project context to the CLI; if an ID or lifecycle event is unavailable,
+  use a manual fallback or unknown status instead of inventing it. Hook failures
+  must not deny the host's normal work.
 
 ## Storage root
 

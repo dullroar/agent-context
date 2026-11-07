@@ -1,13 +1,13 @@
 ---
 id: 04-interoperability
-status: pending
+status: done
 depends_on: [research/03-shared-storage]
 touches:
   - RESEARCH.md
 lane: research
 gate: "manual: compare RESEARCH.md and cited sources to step completion criteria"
 requirements: [R4, R5]
-evidence: ""
+evidence: "2026-11-07: reviewed three GitHub READMEs, MIT license labels, main commit metadata and linked protocol/standards sources; recorded snapshots, limitations, catalog overlap and field crosswalk in RESEARCH.md. No external project was installed or independently tested."
 ---
 
 # Review existing implementations and interoperable standards

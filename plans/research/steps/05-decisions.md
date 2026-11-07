@@ -1,6 +1,6 @@
 ---
 id: 05-decisions
-status: pending
+status: done
 depends_on: [research/04-interoperability]
 touches:
   - RESEARCH.md
@@ -9,7 +9,7 @@ touches:
 lane: research
 gate: "manual: compare RESEARCH.md and cited sources to step completion criteria"
 requirements: [R4, R5]
-evidence: ""
+evidence: "2026-11-07: reviewed repo guidance, available orientation notes, neighboring documented Python workflows and Microsoft filename rules; documented decisions and owner-needed language/packaging preference in RESEARCH.md, with settled boundaries updated in DESIGN.md and spec 0001. OS, WSL and shared-storage acceptance remains untested."
 ---
 
 # Close design questions needed for implementation

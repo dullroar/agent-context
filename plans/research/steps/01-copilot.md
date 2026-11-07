@@ -1,13 +1,13 @@
 ---
 id: 01-copilot
-status: pending
+status: done
 depends_on: []
 touches:
   - RESEARCH.md
 lane: research
 gate: "manual: compare RESEARCH.md and cited sources to step completion criteria"
 requirements: [R1, R5]
-evidence: ""
+evidence: "2026-11-07: reviewed official documentation and retested installed WSL Copilot CLI 1.0.107; instruction and skill discovery and two no-prompt sessionEnd hooks observed in a disposable repo. User reports normal keyring-backed Copilot works; isolated test required login. Authenticated model calls, other events, UI, cloud and enterprise settings untested. See RESEARCH.md for commands and limits."
 ---
 
 # Investigate GitHub Copilot first

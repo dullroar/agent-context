@@ -6,7 +6,7 @@ touches:
   - plans/setup/adoption.md
 lane: design
 gate: "manual: execute the step checks and record exact commands and results"
-requirements: [R1, R2, R3, R4]
+requirements: [R1, R2, R3, R4, R6, R7]
 evidence: ""
 ---
 
@@ -15,6 +15,14 @@ evidence: ""
 ## Change
 
 Write adoption.md with a vendor/interface matrix, exact observed events and IDs, setup/teardown proposal, hook-versus-instructions-versus-skill rationale, no-clobber behavior, failure-open semantics and manual fallback. Explicitly capture unavailable enforcement and storage-root decisions; use documented research rather than guessing capabilities.
+
+Specify the Bash and PowerShell one-command flows: detect Codex, Claude Code
+and Copilot separately; ask only for the registry root; verify that root before
+installing anything into agents; then map each supported integration to its
+own artifact and host-specific destination. Define a safe way to carry the
+selected `AGENT_CONTEXT_HOME` into each agent's hook or wrapper and report
+any host where this cannot be established. Account for Windows versus WSL,
+shims, unsupported interfaces, existing settings, safe reruns and partial errors.
 
 ## Dependencies and boundaries
 

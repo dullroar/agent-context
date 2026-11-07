@@ -1,13 +1,13 @@
 ---
 id: 03-shared-storage
-status: pending
+status: done
 depends_on: [research/02-agent-hooks]
 touches:
   - RESEARCH.md
 lane: research
 gate: "manual: compare RESEARCH.md and cited sources to step completion criteria"
 requirements: [R3, R5]
-evidence: ""
+evidence: "2026-11-07: reviewed linked Microsoft WSL, RDP, policy and sync documentation; documented five topology options, assumptions, failure/recovery and trial sequence in RESEARCH.md. No remote, VM, Windows, WSL shared-root or sync behavior tested."
 ---
 
 # Assess desktop, WSL and VM shared-root designs

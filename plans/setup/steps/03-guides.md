@@ -8,7 +8,7 @@ touches:
   - examples/**
 lane: guides
 gate: "manual: execute the step checks and record exact commands and results"
-requirements: [R1, R2, R3, R5]
+requirements: [R1, R2, R3, R5, R6, R7]
 evidence: ""
 ---
 
@@ -17,6 +17,12 @@ evidence: ""
 ## Change
 
 Explain the model, root selection, setup, verify, update, uninstall, troubleshooting and limitations per environment. Include copy-paste instructions for AGENTS.md, CLAUDE.md and supported Copilot equivalents; add a skill template only if research supports it and explain that it is advisory. Show the hooks or wrappers with no implied guarantee beyond observed support.
+
+Give one copy-paste installation command each for Bash and PowerShell, describe
+the single registry-location prompt and optional path argument, and explain how
+to read the per-agent results and re-run safely after fixing access. Document
+that a Windows root and a WSL root are host-specific choices, even when they
+refer to the same underlying directory.
 
 ## Dependencies and boundaries
 

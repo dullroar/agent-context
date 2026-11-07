@@ -1,12 +1,15 @@
 # agent-context
 
+**Personal research:** This repository is Jim Lehmer's personal research.
+It explores ideas and possible designs; I may or may not implement them.
+
 A local-first, filesystem-native registry for finding the *conversation or
 agent session that did the work*, across coding-agent vendors and machines.
 
-This is deliberately an implementation project, not a competing universal
-memory standard.  Its first job is narrow: create and search portable session
-pointer records without requiring a daemon, database, MCP server, or access to
-the original transcript.
+The proposed implementation has a narrow goal: create and search portable
+session pointer records without requiring a daemon, database, MCP server, or
+access to the original transcript. It is not a competing universal memory
+standard.
 
 ## Problem
 

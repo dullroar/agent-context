@@ -6,7 +6,7 @@ touches:
   - plans/setup/results.md
 lane: integration
 gate: "manual: execute the step checks and record exact commands and results"
-requirements: [R1, R2, R3, R4, R5]
+requirements: [R1, R2, R3, R4, R5, R6, R7]
 evidence: ""
 ---
 
@@ -15,6 +15,12 @@ evidence: ""
 ## Change
 
 Run setup tests and the complete CLI offline suite after integration. Check no-clobber, repeatability, reversal, missing CLI, write failures, quoting and warning/timeout behavior. Record exact evidence and untested interfaces, and link the WSL test plan.
+
+Run both installer entry points in their target shell/OS when available, using
+disposable agent configurations. Verify the one-question flow, root preflight
+before any agent changes, independent detection and correct installation for
+all three agents, missing/unsupported/shim reporting, and safe retries after
+partial failure. Record an unavailable platform check as blocked, not passed.
 
 ## Dependencies and boundaries
 

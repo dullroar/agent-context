@@ -1,13 +1,13 @@
 ---
 id: 02-agent-hooks
-status: pending
+status: done
 depends_on: [research/01-copilot]
 touches:
   - RESEARCH.md
 lane: research
 gate: "manual: compare RESEARCH.md and cited sources to step completion criteria"
 requirements: [R2, R5]
-evidence: ""
+evidence: "2026-11-07: reviewed linked Claude and OpenAI hook, settings, desktop and VS Code documentation; recorded vendor/event/surface matrix and local versions in RESEARCH.md. All hooks, desktop, IDE, resume and failure behavior remain untested locally."
 ---
 
 # Investigate Claude and Codex integration surfaces

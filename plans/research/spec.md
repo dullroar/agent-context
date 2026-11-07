@@ -1,6 +1,8 @@
 # Research — specification
 
-Status: proposed
+Status: complete — research review and documentation, 2026-11-07. Runtime
+acceptance, workplace access and the CLI language decision remain downstream
+work and are not claimed as verified.
 
 ## Outcome
 
@@ -47,3 +49,17 @@ check all new local links, and confirm remaining unknowns are explicit. Record
 per-step evidence. Escalate only a decision needed to proceed, unavailable
 permission, or an acceptance check that cannot be satisfied; do not label an
 untested environment as passing.
+
+## Completion evidence
+
+On 2026-11-07, the five step records were checked against R1–R5 and the linked
+research sections: Copilot interfaces and lifecycle; Claude and Codex hooks;
+shared-root topology; implementation and protocol crosswalk; and v0 decisions.
+The check distinguished documentation from local executable version observations
+and explicitly marked untested sessions, hooks, filesystem behavior, desktop,
+VM, policy and resume. The language and packaging preference is recorded as an
+owner-needed decision for CLI work, as R4 permits.
+
+A local Python structural check validated all 18 step metadata records, the
+dependency graph and links in 32 Markdown files; `git diff --check` passed.
+These checks verify document structure, not vendor or platform behavior.

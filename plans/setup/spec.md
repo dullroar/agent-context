@@ -38,6 +38,37 @@ for each available agent environment. Use research findings, not assumed hooks.
   repeated setup, no-clobber, reversal, argument quoting/spaces, missing CLI,
   simulated write failures and hook event handling. Provide copy-paste examples
   and a matrix identifying supported, manual, unavailable and untested paths.
+- **R6 — One installer per shell:** provide both `scripts/setup.sh` for Bash
+  on WSL/Linux and `scripts/setup.ps1` for PowerShell on Windows. A normal
+  interactive run asks exactly one question: **Where does the registry go?**
+  It may accept the same path as an explicit argument for unattended use.
+  Resolve and display the selected root, then verify directory access with a
+  disposable, uniquely named write/read/delete probe before making any agent
+  configuration changes. If the root cannot be used, stop with a clear error
+  and no agent installation; do not silently select a different root. The
+  selected directory may be created if absent, without overwriting existing data.
+- **R7 — Detect and configure all three agents:** each installer checks for
+  Codex, Claude Code and GitHub Copilot independently in its own execution
+  environment. For each detected agent, install the corresponding supported
+  pre/post hooks, wrappers, instructions, or other integration artifacts into
+  that agent's appropriate locations, and configure the chosen root through
+  the verified mechanism for that host. Artifacts and locations may differ by
+  agent. Preserve unrelated settings and hooks; make managed changes visible,
+  repeatable and reversible, and never silently overwrite user modifications.
+  Report installed, absent, unsupported and failed cases separately, including
+  any manual step. An unavailable or unverified integration is not a success.
+  Detect Windows and WSL installations separately; an executable or shim on
+  `PATH` alone does not prove a working CLI or another interface's support.
+
+For R6–R7, tests must cover all three agents present individually and together,
+none present, a nonfunctional shim, path quoting and spaces, missing or denied
+roots, failed probes, safe cleanup, existing configurations, reruns and a
+per-agent failure after successful preflight. A failed root preflight must leave
+all agent settings and integrations untouched. Validate both installer entry
+points in their actual shell/OS or record the unavailable check as blocked.
+Explicitly running an installer to configure the current user authorizes its
+documented changes for that environment; it does not authorize changes to
+workplace policy or another user's configuration.
 
 ## Boundaries and validation
 
