@@ -1,13 +1,13 @@
 ---
 id: 01-baseline
-status: pending
+status: done
 depends_on: [cli/04-integration, setup/04-validate]
 touches:
   - plans/wsl-test/results.md
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R1, R5]
-evidence: ""
+evidence: "2026-11-08 WSL2 Python 3.12.3 / PyYAML 6.0.1 outside the sandbox: the selected Windows-profile ai-dist-mem 9p/DrvFs mount was writable. In a unique disposable child, synthetic register/list/search/show/validate, UTF-8 and spaces, two topics sharing an opaque session, 12 concurrent creates, and a simulated write failure with preservation passed; all 14 valid records remained and the child was removed. Exact commands, root mapping, synthetic project identity and limits are in ../results.md."
 ---
 
 # Test the CLI on a disposable WSL root

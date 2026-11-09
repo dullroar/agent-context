@@ -1,13 +1,13 @@
 ---
 id: 03-cross-platform
-status: pending
+status: done
 depends_on: [wsl-test/02-claude-codex]
 touches:
   - plans/wsl-test/results.md
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R3, R5]
-evidence: ""
+evidence: "2026-11-08: isolated Windows Claude 2.1.317 and WSL Codex 0.157.0 synthetic sessions overlapped; while both remained active, independent Windows and WSL registry processes created pointers with observed native session IDs. Both host CLIs found both records, using the same Git-origin identity and distinct path hints. On a disposable shared-root child, 8 Windows and 8 WSL concurrent writers produced unique records; writers killed at a controlled pre-publish barrier preserved all 17 final records, validated by both hosts, with a longest Windows path of 197 characters. The operator approved a consumer OneDrive comparison: Windows and WSL both saw both synthetic records locally; documented conflict risks were compared with controlled local duplicate handling. Cloud convergence and cross-device conflicts were not verified. The operator reported VM/RDP unavailable here and plans a separate work follow-up; VM Windows, VM WSL and reconnect behavior remain explicitly untested. See ../results.md."
 ---
 
 # Exercise Windows, VM and shared-root behavior

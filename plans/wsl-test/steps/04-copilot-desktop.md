@@ -7,7 +7,7 @@ touches:
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R4, R5]
-evidence: ""
+evidence: "2026-11-08: in progress. WSL Copilot CLI 1.0.107 completed an authenticated synthetic turn via the existing keyring in an isolated profile, reporting sessionStart and a native ID matching its result. A test-owned pointer was found by both WSL and Windows CLIs. A separate missing-root synthetic turn reported the warning and completed. These two results each reported one premium request. A Windows VS Code Copilot shim --version probe in a disposable profile exited 127 because the standalone CLI was not found. The operator ran a VS Code Local-harness turn; it returned no hook context. Local and Copilot are distinct targets, so the VS Code Copilot-harness check remains untested. The running desktop Codex window exposed only window controls through UI Automation, not its chat composer. See ../results.md."
 ---
 
 # Test available Copilot and desktop integrations

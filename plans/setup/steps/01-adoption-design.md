@@ -1,13 +1,13 @@
 ---
 id: 01-adoption-design
-status: pending
+status: done
 depends_on: [archive/research/02-agent-hooks, archive/research/03-shared-storage, archive/research/05-decisions, cli/01-contract-fixtures]
 touches:
   - plans/setup/adoption.md
 lane: design
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R1, R2, R3, R4, R6, R7]
-evidence: ""
+evidence: "2026-11-07 WSL2: reviewed RESEARCH.md and its dated vendor/event sources, CLI and setup specifications, and prerequisite evidence; adoption.md records the interface matrix, observed and unverified events, wrapper/instruction/skill roles, safety and host-specific setup design. The existing local Copilot event observation is limited to no-prompt sessionEnd; Claude and Codex hooks remain untested. A unique child of the Windows-profile ai-dist-mem base passed WSL write/read and Windows PowerShell read outside the sandbox and was removed; the sandbox mount was read-only and its interop call failed. Version probes found Codex 0.157.0, Claude Code 2.1.319 and Copilot 1.0.107 in WSL; these do not prove hook, authentication or other-interface support."
 ---
 
 # Design integration and adoption layers

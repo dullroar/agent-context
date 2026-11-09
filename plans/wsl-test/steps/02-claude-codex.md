@@ -1,13 +1,13 @@
 ---
 id: 02-claude-codex
-status: pending
+status: done
 depends_on: [wsl-test/01-baseline]
 touches:
   - plans/wsl-test/results.md
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R2, R5]
-evidence: ""
+evidence: "2026-11-08: authenticated synthetic WSL CLI turns succeeded for Claude 2.1.319 and Codex 0.157.0 on the shared root, with separate-session lookup in both directions, matching observed SessionStart IDs and native IDs, and a missing-root warning without blocking either turn. VS Code WSL extension searches found both records; native IDs were corroborated from the specific sessions' local metadata. Project-scoped Claude and Codex VS Code hooks each produced a SessionStart ID matching its native session record after normal trust review. Both extension chats completed missing-root turns with warnings; the Claude result was submitted by the operator and corroborated from its native session. Monitor interruption/timeout for the manual VS Code hooks and resume remain untested. See ../results.md."
 ---
 
 # Test Claude and Codex in WSL and VS Code

@@ -1,13 +1,13 @@
 ---
 id: 04-validate
-status: pending
+status: done
 depends_on: [setup/03-guides, cli/04-integration]
 touches:
   - plans/setup/results.md
 lane: integration
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R1, R2, R3, R4, R5, R6, R7]
-evidence: ""
+evidence: "2026-11-08: after integration, full offline suite discovered 75 tests: local WSL passed 60/skipped 15, shared-root WSL passed 61/skipped 14 including the cross-host reader check, and Windows Python passed 33/skipped 42. The installed three-agent WSL integration passed with local synthetic providers under the shared root, including existing hooks, observed IDs, interrupted and stalled hooks, missing-root warnings, rerun and teardown. Both installer entry points were exercised in their target shells with disposable settings. Exact commands, skips, manual cases and limitations are in ../results.md; authenticated and non-CLI acceptance remains in the WSL plan."
 ---
 
 # Validate setup with the CLI and record handoff

@@ -35,7 +35,17 @@ service, distributed locking, or a new runtime protocol.
 - [Interoperability research](RESEARCH.md) — adjacent standards and gaps.
 - [Initial protocol spec](specs/0001-filesystem-session-registry.md).
 - [Coordinated plans](plans/README.md) — research, CLI, setup, and WSL testing.
+- [Agent setup and manual workflow](docs/setup.md).
 - [Repository memory](MEMORY.md) — accumulated operational findings.
+
+## Agent setup
+
+After installing the CLI, run `./scripts/setup.sh` in Bash on Linux/WSL or
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup.ps1`
+in Windows PowerShell. Each asks for the registry location unless it is supplied
+as an argument. Setup reports each agent's result and any manual step. See the
+[setup guide](docs/setup.md) for launchers, inspection, updates, teardown,
+shared-root verification and the tested interface matrix.
 
 ## CLI
 
@@ -101,5 +111,7 @@ that the vendor supports resume.
 ## Status
 
 The reference CLI has passed its offline acceptance suite on local storage and
-the selected Windows-profile WSL mount. Adapter setup and cross-interface
-Windows/WSL agent acceptance are separate planned work.
+the selected Windows-profile WSL mount. Authenticated synthetic checks have
+also exercised the three WSL CLI start hooks, Claude and Codex VS Code WSL
+hooks, and Windows/WSL record visibility. See the [acceptance record](plans/wsl-test/results.md)
+for exact versions and remaining Copilot, desktop, VM and sync limitations.
