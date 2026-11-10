@@ -1,13 +1,13 @@
 ---
 id: 04-copilot-desktop
-status: pending
+status: done
 depends_on: [wsl-test/03-cross-platform]
 touches:
   - plans/wsl-test/results.md
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R4, R5]
-evidence: "2026-11-08: in progress. WSL Copilot CLI 1.0.107 completed an authenticated synthetic turn via the existing keyring in an isolated profile, reporting sessionStart and a native ID matching its result. A test-owned pointer was found by both WSL and Windows CLIs. A separate missing-root synthetic turn reported the warning and completed. These two results each reported one premium request. A Windows VS Code Copilot shim --version probe in a disposable profile exited 127 because the standalone CLI was not found. The operator ran a VS Code Local-harness turn; it returned no hook context. Local and Copilot are distinct targets, so the VS Code Copilot-harness check remains untested. The running desktop Codex window exposed only window controls through UI Automation, not its chat composer. See ../results.md."
+evidence: "2026-11-10: WSL Copilot CLI and VS Code WSL Copilot target completed synthetic sessions. The VS Code sessionStart hook supplied an observed native ID; after an initial unset-root warning, a Copilot session registered acr_0ac5b461afa74809ac89cf90a2d16c45 at /mnt/c/Users/jimle/ai-dist-mem. Independent CLI show/search passed. A separate VS Code Copilot session reported a different observed native ID and successfully found the pointer; no record was changed. The operator could not interact with the desktop Codex chat composer; desktop GUI and Windows VS Code Copilot shim remain untested. See ../results.md."
 ---
 
 # Test available Copilot and desktop integrations

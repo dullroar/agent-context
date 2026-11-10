@@ -1,13 +1,13 @@
 ---
 id: 05-close
-status: pending
+status: done
 depends_on: [wsl-test/04-copilot-desktop]
 touches:
   - plans/wsl-test/results.md
 lane: wsl
 gate: "manual: execute the step checks and record exact commands and results"
 requirements: [R1, R2, R3, R4, R5]
-evidence: ""
+evidence: "2026-11-10: final offline suite passed (75 tests, 15 skipped); bash -n scripts/setup.sh and git diff --check passed. The results matrix records passed mounted-root, WSL Claude/Codex, available Windows-agent, and VS Code WSL Copilot checks, plus untested desktop GUI, Windows Copilot shim, VM/RDP, and cross-device sync/convergence. The separate Copilot session lookup passed. Seven individually verified synthetic registry records and the disposable Copilot test project were removed; unrelated registry entries and user configuration were not changed. See ../results.md."
 ---
 
 # Reconcile acceptance evidence and remaining gaps

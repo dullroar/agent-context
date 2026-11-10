@@ -1,11 +1,12 @@
 # WSL acceptance results
 
-This is an in-progress acceptance record. The offline WSL baseline,
-Claude/Codex WSL and VS Code checks, and the described Windows/WSL agent
-overlap and local filesystem checks passed. Copilot and desktop checks are in
-progress; VM/RDP and cross-device sync behavior remain untested. The setup
-integration's isolated mock-provider results are recorded separately in
-[setup results](../setup/results.md).
+The available acceptance checks are complete. The mounted-root WSL baseline,
+WSL Claude/Codex and VS Code targets, available Windows-agent overlap, and
+VS Code WSL Copilot target passed. The desktop GUI, Windows VS Code Copilot
+shim, VM/RDP, and cross-device sync convergence/conflict behavior remain
+untested and are not claimed as passes. Final offline validation passed with 75
+tests run and 15 skipped. The setup integration's isolated mock-provider
+results are recorded separately in [setup results](../setup/results.md).
 
 ## Handoff checkpoint — 2026-11-08
 
@@ -646,3 +647,95 @@ target is offered in this test window. Accordingly, the Local result does not
 verify the prepared Copilot hook or the VS Code Copilot target, which remains
 untested. The correction does not require installing extensions or changing
 the existing Copilot CLI setup.
+
+## 2026-11-10 — resume check; step 04 blocked on operator interaction
+
+Resumed from the 2026-11-08 checkpoint. `PYTHONPATH=src python3 -m unittest
+discover -s tests` ran 75 tests, OK with 15 skipped; `bash -n scripts/setup.sh`
+and `git diff --check` passed. The six retained synthetic pointers are still
+present on `/mnt/c/Users/jimle/ai-dist-mem` (one file each for the IDs listed in
+the handoff checkpoint). The Windows desktop test directory still exists. The
+two disposable WSL projects under `/tmp/agent-context-vscode-*` no longer exist,
+so the prepared VS Code Copilot hook project (`.github/hooks/agent-context.json`)
+would have to be recreated; their Codex trust entries may still persist in the
+user's Codex profile and are not yet cleaned up.
+
+No new interface check was run. Still **untested**: the VS Code Copilot-target
+session (the earlier Local-target result does not count), the desktop GUI
+session, VM/RDP, and cross-device OneDrive sync/conflict behavior. The remaining
+checks need the operator to submit prompts in a GUI (UI Automation could not
+populate the Copilot composer or the desktop Codex chat) and a fresh decision on
+further synthetic requests. Steps 04 and 05 remain `pending`.
+
+## 2026-11-10 — VS Code WSL Copilot target, pointer created
+
+The operator opened the recreated project
+`/tmp/agent-context-vscode-copilot-acceptance` in VS Code and reported that its
+Copilot target ran the project-scoped `sessionStart` hook. The hook context
+reported event `sessionStart`, agent `copilot`, runtime `WSL`, and the session
+ID encoded as `OTU3ZjgxY2YtMmI5NS00Y2RjLWIyMjMtMjliNzVjZTVlYmU1`.
+Decoded, that value is
+`957f81cf-2b95-4cdc-b223-29b75ce5ebe5`. The first turn did not create a record
+because `AGENT_CONTEXT_HOME` was unset in the Copilot shell; this was a useful
+failure-open result, not a registration pass.
+
+In a subsequent Copilot session, the operator reported another observed
+`sessionStart` context and resolved the intended root dynamically from the
+Windows profile to `/mnt/c/Users/jimle/ai-dist-mem`. That session used its
+own observed ID `4fa1b87e-14a8-4068-88cb-61b91953c244` and registered synthetic
+record `acr_0ac5b461afa74809ac89cf90a2d16c45` with vendor/producer `copilot`,
+project identity `test:agent-context-vscode-copilot`, title `VS Code Copilot
+acceptance test`, and status `unknown`. The operator's `show` and title-search
+commands succeeded. Independent WSL CLI checks on 2026-11-10 also succeeded:
+`AGENT_CONTEXT_HOME=/mnt/c/Users/jimle/ai-dist-mem
+PYTHONPATH=/home/lehmer/repos/agent-context/src python3 -m agent_context show
+acr_0ac5b461afa74809ac89cf90a2d16c45` displayed the exact session ID and
+metadata, and the same environment with `search 'VS Code Copilot acceptance
+test'` returned that record.
+
+The separate-session Copilot lookup had not yet been observed at this checkpoint.
+The record then proved pointer creation and CLI lookup, not cross-session
+discovery or resume.
+
+## 2026-11-10 — final reconciliation and cleanup
+
+The operator completed a separate VS Code WSL Copilot session. Its hook supplied
+event `sessionStart`, agent `copilot`, runtime `WSL`, and native session ID
+`65df54ce-cc88-448b-a43d-d078fcb18aaf`, which differs from the native ID on
+pointer `acr_0ac5b461afa74809ac89cf90a2d16c45`. In that separate session, the
+operator reported successful `show` and title-search commands against
+`/mnt/c/Users/jimle/ai-dist-mem`. The lookup did not create or update a record.
+Together with the independent WSL CLI checks recorded above, this verifies the
+VS Code Copilot target, observed session identity, shared-root pointer, and
+cross-session lookup. Resume was not tested.
+
+### Acceptance matrix
+
+| Requirement | Result | Evidence and limits |
+| --- | --- | --- |
+| R1 — WSL CLI | Pass | Mounted Windows-profile root baseline passed register/list/search/show/validate, spaces and UTF-8, multiple topics, concurrent creates, and simulated write failure. Exact commands and WSL environment are in the 2026-11-08 baseline section. |
+| R2 — Real interfaces | Pass for available required targets | WSL Claude and Codex CLI, separate VS Code Claude/Codex targets, observed native IDs, and cross-session lookups are recorded above. Resume and forced hook interruption/timeout remain untested. |
+| R3 — Windows/WSL and VM | Pass for available Windows/WSL checks; VM and cloud sync untested | Windows Claude and Codex plus WSL Codex overlapped on the selected root; both host CLIs found each other's records. Concurrent and interrupted writes passed. Local OneDrive visibility was observed, but cloud convergence and cross-device conflict behavior were not tested. VM/RDP was unavailable. |
+| R4 — Copilot/desktop | Pass for WSL Copilot CLI and VS Code WSL Copilot; other interfaces untested | Copilot CLI failure-open and registration checks passed. The VS Code WSL Copilot hook and separate-session pointer lookup passed. The Windows VS Code Copilot shim was unavailable, and UI Automation could not use the running desktop Codex chat composer; no desktop GUI conversation was run. |
+| R5 — Honest result | Pass | This matrix distinguishes tested checks from unavailable or untested interfaces. No resume, VM/RDP, cloud convergence, cross-device conflict, or desktop GUI success is claimed. |
+
+Final validation on 2026-11-10 from the repository root:
+
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — 75 tests ran,
+  passed; 15 skipped.
+- `bash -n scripts/setup.sh` — passed.
+- `git diff --check` — passed.
+- Independent WSL CLI `show` and `search` found the Copilot pointer before
+  cleanup. The operator's separate Copilot session also reported both lookups
+  succeeded.
+
+Cleanup verified each of the six retained synthetic records listed in the
+handoff checkpoint and the new Copilot acceptance pointer by exact registry
+ID and synthetic marker before removing only those seven files. A registry
+scan reported zero read errors. The disposable project
+`/tmp/agent-context-vscode-copilot-acceptance` was removed. No unrelated
+registry entries or personal settings were changed; any VS Code workspace-trust
+entry was not inspected or modified.
+
+Steps 04 and 05 are done for the checks available under this plan. The
+untested items above remain limits on the evidence, not acceptance passes.
